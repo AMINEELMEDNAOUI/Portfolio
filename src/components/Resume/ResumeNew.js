@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdfen from "../../Assets/../Assets/AMINE_EL_MEDNAOUI_CV_ENG.pdf";
+import pdfen from "../../Assets/../Assets/AMINE_EL_MEDNAOUI_CV_EN.pdf";
 import pdffr from "../../Assets/../Assets/AMINE_EL_MEDNAOUI_CV_FR.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
