@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
+import Contact from "./components/Contact/Contact";
 import {
   HashRouter as Router,
   Route,
@@ -42,6 +43,7 @@ function App() {
           <Route path="/resume" element={<Resume />} />
           {/* Redirection automatique vers l'accueil si le lien est inconnu */}
           <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>

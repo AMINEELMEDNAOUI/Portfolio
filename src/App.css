@@ -39,15 +39,100 @@
 }
 
 .img-fluid {
-  /* Conserve la classe img-fluid pour la responsivité de base */
-  /* ... autres styles de la classe img-fluid */
 
-  /* Définir une nouvelle taille (exemple en pixels) */
   width: 500px;
-  /* Augmente la largeur à 150 pixels */
-  height: 500px;
-  /* Conserve la proportion de l'image (très recommandé) */
 
-  /* OU si vous voulez une taille relative au conteneur */
-  /* width: 10%; */
+  height: 500px;
+
+}
+
+
+
+
+.custom-input:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #be50f4 !important;
+  box-shadow: 0 0 10px rgba(199, 112, 254, 0.5) !important;
+  outline: none !important;
+}
+
+
+/* Force la section contact à prendre toute la hauteur pour bloquer le footer en bas */
+#contact {
+  min-height: 100vh !important;
+  padding-bottom: 50px !important;
+}
+
+/* Désactive toute interaction avec les particules (le clic passera à travers) */
+#tsparticles,
+.particles-js-canvas-el,
+canvas {
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Style pour s'assurer que les inputs sont bien visibles et cliquables */
+.custom-input {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid #c770fe !important;
+  color: white !important;
+  position: relative !important;
+  z-index: 100 !important;
+  /* Très élevé */
+  pointer-events: auto !important;
+  /* Force la réactivation du clic */
+}
+
+/* Correction pour le bouton */
+.fork-btn-inner {
+  position: relative !important;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+}
+
+.custom-input {
+  background-color: transparent;
+  color: #cfa9ff;
+  /* ta couleur violette */
+  border: 1px solid #9b59ff;
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+  /* Blanc à 50% d'opacité */
+  opacity: 1;
+  /* Nécessaire pour Firefox */
+}
+
+/* Optionnel : couleur quand on clique dans le champ */
+.custom-input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Quand on clique dedans */
+.custom-input:focus {
+  background-color: transparent;
+  color: #cfa9ff;
+  border-color: #cfa9ff;
+  box-shadow: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  /* Couleur du texte */
+  -webkit-box-shadow: 0 0 0px 1000px #1a1421 inset !important;
+  /* Couleur de fond de ton thème */
+  transition: background-color 5000s ease-in-out 0s;
+  border: 1px solid #c770fe !important;
+}
+
+.my-swal-popup {
+  border: 1px solid #c770fe !important;
+  border-radius: 15px !important;
+  box-shadow: 0 0 20px rgba(199, 112, 254, 0.2) !important;
 }
