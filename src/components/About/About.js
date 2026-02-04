@@ -51,9 +51,37 @@ function About() {
 
           <Toolstack />
 
-          <Github />
+          <div className="github-wrap-container">
+            <Github />
+          </div>
         </Container>
       </Container>
+      <style>{`
+  /* On cible le conteneur généré par la bibliothèque GitHub Calendar */
+  .github-wrap-container .react-activity-calendar {
+    display: flex !important;
+    flex-wrap: wrap !important; /* Force le retour à la ligne */
+    justify-content: center !important;
+  }
+
+  /* On s'assure que les graphiques internes ne dépassent pas */
+  .github-wrap-container svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix pour le texte étiré sur mobile */
+  .about-section p, .about-card p {
+    text-align: left !important;
+    word-spacing: normal !important;
+  }
+
+  @media (max-width: 767px) {
+    .about-section {
+      overflow-x: hidden !important; /* Empêche tout scroll horizontal parasite */
+    }
+  }
+`}</style>
     </>
   );
 }

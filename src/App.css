@@ -242,3 +242,15 @@ textarea:-webkit-autofill:focus {
   box-shadow: none !important;
   outline: none !important;
 }
+
+.chatbot-container[data-lang="fr"] .react-chatbot-kit-chat-input::placeholder {
+  color: transparent;
+}
+
+.chatbot-container[data-lang="fr"] .react-chatbot-kit-chat-input::after {
+  content: "Écrivez votre message ici...";
+  position: absolute;
+  left: 20px;
+  color: #919191;
+  pointer-events: none;
+}

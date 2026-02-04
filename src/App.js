@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Preloader from "./components/Pre"; // Corrigé : le chemin standard dans src
+import Preloader from "./components/Pre";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
@@ -7,6 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact";
+import MyBot from "./components/MyBot"; // 1. Importation du Chatbot
 import {
   HashRouter as Router,
   Route,
@@ -30,8 +31,7 @@ function App() {
   }, []);
 
   return (
-    /* IMPORTANT : On ajoute basename pour que GitHub Pages comprenne le sous-dossier /Portfolio */
-    <Router >
+    <Router>
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
@@ -41,10 +41,13 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          {/* Redirection automatique vers l'accueil si le lien est inconnu */}
-          <Route path="*" element={<Navigate to="/" />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+
+        {/* 2. Affichage du Chatbot sur toutes les pages */}
+        <MyBot />
+
         <Footer />
       </div>
     </Router>
