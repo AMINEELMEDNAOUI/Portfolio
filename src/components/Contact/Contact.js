@@ -3,8 +3,10 @@ import emailjs from '@emailjs/browser';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Particle from '../Particle';
 import Swal from 'sweetalert2';
+import { useTranslation } from "react-i18next"; // 1. Ajout de l'import
 
 function Contact() {
+    const { t } = useTranslation(); // 2. Initialisation du hook
     const form = useRef();
 
     const sendEmail = (e) => {
@@ -17,8 +19,8 @@ function Contact() {
         )
             .then(() => {
                 Swal.fire({
-                    title: 'Message Sent!',
-                    text: 'Amine will get back to you soon.',
+                    title: t("contact.alert_success_title"), // Traduit
+                    text: t("contact.alert_success_text"),   // Traduit
                     icon: 'success',
                     background: '#1a1421',
                     color: '#ffffff',
@@ -33,10 +35,10 @@ function Contact() {
             .catch((error) => {
                 console.error("Error:", error);
                 Swal.fire({
-                    title: 'Oops...',
-                    text: 'Something went wrong while sending the message.',
+                    title: t("contact.alert_error_title"), // Traduit
+                    text: t("contact.alert_error_text"),   // Traduit
                     icon: 'error',
-                    background: '#1a1421', // Fixed property name
+                    background: '#1a1421',
                     color: '#fff',
                     confirmButtonColor: '#c770fe'
                 });
@@ -51,12 +53,12 @@ function Contact() {
                     <Container className="home-content">
                         <Row style={{ justifyContent: "center", padding: "10px" }}>
                             <Col md={7} className="home-header" style={{ textAlign: "center", zIndex: 10, marginTop: "-60px", marginLeft: "-20px" }}>
-                                <h1 className="heading" style={{ paddingBottom: 15 }}>
-                                    CONTACT <strong className="main-name">ME</strong>
+                                <h1 className="heading" style={{ paddingBottom: 15, marginLeft: "-60px" }}>
+                                    {t("contact.title")} <strong className="main-name">{t("contact.me")}</strong>
                                 </h1>
 
                                 <p style={{ color: "white" }}>
-                                    Feel free to <span className="purple">reach out</span> to me!
+                                    {t("contact.sub")} <span className="purple">{t("contact.reach")}</span> {t("contact.to_me")}
                                 </p>
 
                                 <Form
@@ -65,35 +67,35 @@ function Contact() {
                                     style={{ textAlign: "left", marginTop: "30px" }}
                                 >
                                     <Form.Group className="mb-3">
-                                        <Form.Label style={{ color: "white" }}>Name</Form.Label>
+                                        <Form.Label style={{ color: "white" }}>{t("contact.label_name")}</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="name"
                                             className="custom-input"
-                                            placeholder="Your name"
+                                            placeholder={t("contact.placeholder_name")}
                                             required
                                         />
                                     </Form.Group>
 
                                     <Form.Group className="mb-3">
-                                        <Form.Label style={{ color: "white" }}>Email</Form.Label>
+                                        <Form.Label style={{ color: "white" }}>{t("contact.label_email")}</Form.Label>
                                         <Form.Control
                                             type="email"
                                             name="email"
                                             className="custom-input"
-                                            placeholder="name@example.com"
+                                            placeholder={t("contact.placeholder_email")}
                                             required
                                         />
                                     </Form.Group>
 
                                     <Form.Group className="mb-3">
-                                        <Form.Label style={{ color: "white" }}>Message</Form.Label>
+                                        <Form.Label style={{ color: "white" }}>{t("contact.label_message")}</Form.Label>
                                         <Form.Control
                                             as="textarea"
                                             name="message"
                                             rows={5}
                                             className="custom-input"
-                                            placeholder="Your message..."
+                                            placeholder={t("contact.placeholder_message")}
                                             required
                                         />
                                     </Form.Group>
@@ -105,7 +107,7 @@ function Contact() {
                                             className="fork-btn-inner"
                                             style={{ width: "100%", padding: "10px" }}
                                         >
-                                            Send Message
+                                            {t("contact.send")}
                                         </Button>
                                     </div>
                                 </Form>

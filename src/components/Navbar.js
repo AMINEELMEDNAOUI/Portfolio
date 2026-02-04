@@ -1,36 +1,45 @@
-import React, { useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import logo from "../Assets/logo.png";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
-import { AiOutlineMail } from "react-icons/ai";
-
+import { useTranslation } from "react-i18next";
+import Flag from "react-world-flags";
+import logo from "../Assets/logo.png";
+import { CgGitFork, CgFileDocument } from "react-icons/cg";
 import {
+  AiOutlineMail,
   AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
-  AiOutlineUser,
+  AiOutlineUser
 } from "react-icons/ai";
-
-import { CgFileDocument } from "react-icons/cg";
 import "../App.css";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const { t, i18n } = useTranslation();
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
+  // Gère le changement de couleur au scroll
+  useEffect(() => {
+    const scrollHandler = () => {
+      if (window.scrollY >= 20) {
+        updateNavbar(true);
+      } else {
+        updateNavbar(false);
+      }
+    };
 
-  window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    updateExpanded(false);
+  };
+
+  // Détermine le drapeau à afficher dans le titre du menu
+  const currentFlag = i18n.language.startsWith("fr") ? "FR" : "GB";
 
   return (
     <Navbar
@@ -40,66 +49,48 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        <Navbar.Brand href="/Portfolio/" className="d-flex">
+        <Navbar.Brand href="/" className="d-flex">
           <img src={logo} className="img-fluid logo" alt="brand" />
         </Navbar.Brand>
+
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : "expanded");
-          }}
+          onClick={() => updateExpanded(expand ? false : "expanded")}
         >
           <span></span>
           <span></span>
           <span></span>
         </Navbar.Toggle>
+
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                <AiOutlineHome style={{ marginBottom: "2px" }} /> {t("nav.home")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/about"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+              <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> {t("nav.about")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
+              <Nav.Link as={Link} to="/project" onClick={() => updateExpanded(false)}>
+                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> {t("nav.projects")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/resume"
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+              <Nav.Link as={Link} to="/resume" onClick={() => updateExpanded(false)}>
+                <CgFileDocument style={{ marginBottom: "2px" }} /> {t("nav.resume")}
               </Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/contact"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineMail style={{ marginBottom: "2px" }} /> Contact Me
+              <Nav.Link as={Link} to="/contact" onClick={() => updateExpanded(false)}>
+                <AiOutlineMail style={{ marginBottom: "2px" }} /> {t("nav.contact")}
               </Nav.Link>
             </Nav.Item>
 
@@ -115,6 +106,29 @@ function NavBar() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
+
+            <NavDropdown
+              title={
+                <span className="lang-menu-title">
+                  <Flag code={currentFlag} height="14" style={{ marginRight: "8px", borderRadius: "2px" }} />
+                  {currentFlag === "FR" ? "FR" : "EN"}
+                </span>
+              }
+              id="language-dropdown"
+              className="language-dropdown-container"
+            >
+              <NavDropdown.Item onClick={() => changeLanguage("en")} className="d-flex align-items-center">
+                <Flag code="GB" height="14" style={{ marginRight: "10px", borderRadius: "2px" }} />
+                {t("nav.english")}
+              </NavDropdown.Item>
+
+              <NavDropdown.Divider style={{ backgroundColor: "#c770fe", opacity: 0.2 }} />
+
+              <NavDropdown.Item onClick={() => changeLanguage("fr")} className="d-flex align-items-center">
+                <Flag code="FR" height="14" style={{ marginRight: "10px", borderRadius: "2px" }} />
+                {t("nav.french")}
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

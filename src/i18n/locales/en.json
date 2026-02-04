@@ -1,0 +1,110 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "resume": "Resume",
+        "contact": "Contact Me",
+        "english": "English",
+        "french": "French"
+    },
+    "home": {
+        "greeting": "Hi There!",
+        "im": "I'M",
+        "find_me": "FIND ME ON",
+        "connect": "Feel free to",
+        "connect_purple": "connect",
+        "connect_end": "with me"
+    },
+    "resume": {
+        "download": "Download Resume"
+    },
+    "about": {
+        "title": "Know Who",
+        "im": "I'M",
+        "skillset": "Professional",
+        "skillset_strong": "Skillset",
+        "tools_strong": "Tools",
+        "tools_text": "I use"
+    },
+    "aboutCard": {
+        "hi": "Hi everyone! I’m",
+        "from": "from",
+        "working": "I’m currently working as a",
+        "at": "at",
+        "degree": "I hold a Master's degree in",
+        "school": "from",
+        "hobbies_title": "Outside of coding, I love engaging in activities that keep me creative and inspired:",
+        "hobby_1": "Playing Video Games 🎮",
+        "hobby_2": "Playing Football ⚽",
+        "hobby_3": "Traveling and Exploring New Places 🌍",
+        "quote": "The only way to do great work is to love what you do!"
+    },
+    "github": {
+        "days": "Days I",
+        "code": "Code",
+        "less": "Less",
+        "more": "More",
+        "contributions": "{{count}} contributions in the last year"
+    },
+    "contact": {
+        "title": "CONTACT",
+        "me": "ME",
+        "sub": "Feel free to",
+        "reach": "reach out",
+        "to_me": "to me!",
+        "label_name": "Name",
+        "label_email": "Email",
+        "label_message": "Message",
+        "placeholder_name": "Your name",
+        "placeholder_email": "name@example.com",
+        "placeholder_message": "Your message...",
+        "send": "Send Message",
+        "alert_success_title": "Message Sent!",
+        "alert_success_text": "Amine will get back to you soon.",
+        "alert_error_title": "Oops...",
+        "alert_error_text": "Something went wrong while sending the message."
+    },
+    "home2": {
+        "title": "LET ME",
+        "title_purple": "INTRODUCE",
+        "title_end": "MYSELF",
+        "body_1": "I'm Software Engineer graduate with a Master's degree in Big Data and Internet of Things from the National School of Arts and Crafts of Casablanca (ENSAM), passionate about transforming concepts into reliable and scalable solutions. Possessing dual expertise in Full-Stack Development and Big Data & IoT Systems, I specialize in building high-performance applications, from system architecture to intuitive user experiences. My goal is to design and integrate efficient business process management systems, ensuring operational effectiveness and contributing to key organizational objectives.",
+        "proficient": "I’m proficient in",
+        "stack_end": "— and I enjoy working across both backend and frontend stacks.",
+        "interests": "My key areas of interest include developing",
+        "interest_web": "Web Applications,",
+        "designing": "designing Efficient",
+        "interest_bpm": "Business Process Solutions (BPM/ERP),",
+        "exploring": "and exploring",
+        "interest_ai": "AI, Big Data & IoT Systems.",
+        "build_with": "Whenever possible, I love building projects with",
+        "and_modern": "and modern frameworks like"
+    },
+    "type": {
+        "software": "Software Engineer",
+        "fullstack": "Full Stack Developer",
+        "mern": "MERN Stack Developer",
+        "bpm": "BPM/ERP Integration Specialist"
+    },
+    "projects": {
+        "title": "My Recent",
+        "title_purple": "Works",
+        "subtitle": "Here are a few projects I've worked on recently.",
+        "p1_title": "Wavesoft",
+        "p1_desc": "Designed and implemented an automated procurement solution by integrating BonitaSoft BPM with WaveSoft ERP to modernize legacy workflow. By replacing the outdated VDoc system with BPMN-modeled processes and bespoke user interfaces, I streamlined the purchasing lifecycle and enhanced operational efficiency. The solution features a centralized web application that provides real-time tracking for purchase requests, quote management, and stock releases, ensuring a transparent and data-driven supply chain.",
+        "p2_title": "RemoteCheck",
+        "p2_desc": "Designed and implemented a specialized web interface using the MERN stack (MySQL, Express, React, and Node.js) to modernize employee attendance tracking across remote operational sites. By collaborating with a cross-functional team, I engineered a robust management system that replaced manual reporting with a streamlined, digital workflow. The final solution provides real-time oversight of workforce presence, significantly enhancing data accuracy and operational transparency while demonstrating a comprehensive command of full-stack development and database integration.",
+        "p3_title": "Brimed Academy",
+        "p3_desc": "Designed and developed online Education Plateforme a comprehensive management ecosystem for a tutoring center, leveraging a modern full-stack architecture with ReactJS and Spring Boot. I engineered a centralized platform that digitizes the entire academic workflow, from student and teacher onboarding to automated course scheduling and payment processing. By integrating a secure backend with a responsive user interface, the solution eliminated administrative bottlenecks, providing real-time data synchronization and a seamless experience for both staff and educators.",
+        "p4_title": "PPT Presentation Controller",
+        "p4_desc": "Engineered an innovative gesture-controlled presentation system that leverages Computer Vision and Machine Learning to enable touchless navigation. By implementing a neural network to recognize and classify hand gestures in real time, I developed a seamless interface that translates physical movements—such as pointing or drawing—into system commands. This solution integrates sophisticated gesture-detection algorithms to replace traditional input devices, offering a more intuitive and interactive user experience for digital presentations.",
+        "p5_title": "Face Recognition System",
+        "p5_desc": "Designed and developed an intelligent biometric attendance solution to automate student check-ins and streamline classroom management. By replacing traditional roll calls with real-time facial recognition, the system provides a contactless and fraud-proof method for verifying student identity via live video feeds. I implemented a robust time-slotting architecture that aligns with academic schedules, allowing for precise tracking across multiple lecture periods while integrating a validation layer to prevent duplicate entries. This centralized dashboard offers educators an instantaneous, data-driven overview of student punctuality and attendance patterns, significantly enhancing administrative efficiency and data accuracy.",
+        "p6_title": "Smart Office IoT System",
+        "p6_desc": "Engineered a comprehensive IoT ecosystem designed to optimize environmental conditions and operational efficiency within modern workspaces. By integrating a network of sensors and actuators, I developed autonomous control systems for lighting, climate (temperature and humidity), and blinds management to maximize energy savings while enhancing user comfort. The system also features a proactive safety layer with real-time gas detection and intelligent data modeling. This project involved extensive research into hardware selection and communication protocols to create robust algorithms that demonstrate the tangible impact of smart technology on workspace productivity, occupant safety, and environmental sustainability."
+    },
+    "footer": {
+        "dev_by": "Designed and Developed by Amine El Mednaoui"
+    }
+}

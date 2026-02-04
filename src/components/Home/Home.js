@@ -4,8 +4,7 @@ import homeLogo from "../../Assets/home-main.svg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import Techstack from "../About/Techstack";
-import Github from "../About/Github";
+import { useTranslation } from "react-i18next"; // Import
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -14,6 +13,8 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Home() {
+  const { t } = useTranslation(); // Initialisation
+
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -22,14 +23,14 @@ function Home() {
           <Row>
             <Col md={7} className="home-header">
               <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hi There!{" "}
+                {t("home.greeting")}{" "}
                 <span className="wave" role="img" aria-labelledby="wave">
                   👋🏻
                 </span>
               </h1>
 
               <h1 className="heading-name">
-                I'M
+                {t("home.im")}
                 <strong className="main-name"> Amine El Mednaoui</strong>
               </h1>
 
@@ -49,53 +50,35 @@ function Home() {
           </Row>
         </Container>
       </Container>
+
       <Home2 />
 
       <Container>
         <Row style={{ paddingTop: "50px", paddingBottom: "80px" }}>
           <Col md={12} className="home-about-social">
-            <h1>Find Me On</h1>
+            <h1>{t("home.find_me")}</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              {t("home.connect")} <span className="purple">{t("home.connect_purple")} </span>{t("home.connect_end")}
             </p>
             <ul className="home-about-social-links">
+              {/* Tes liens sociaux restent identiques */}
               <li className="social-icons">
-                <a
-                  href="https://github.com/AMINEELMEDNAOUI"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
+                <a href="https://github.com/AMINEELMEDNAOUI" target="_blank" rel="noreferrer" className="icon-colour home-social-icons">
                   <AiFillGithub />
                 </a>
               </li>
               <li className="social-icons">
-                <a
-                  href="https://twitter.com/AElmednaoui"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
+                <a href="https://twitter.com/AElmednaoui" target="_blank" rel="noreferrer" className="icon-colour home-social-icons">
                   <AiOutlineTwitter />
                 </a>
               </li>
               <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/amine-el-mednaoui-4737b8245/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
+                <a href="https://www.linkedin.com/in/amine-el-mednaoui-4737b8245/" target="_blank" rel="noreferrer" className="icon-colour home-social-icons">
                   <FaLinkedinIn />
                 </a>
               </li>
               <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/amineelm01"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
+                <a href="https://www.instagram.com/amineelm01" target="_blank" rel="noreferrer" className="icon-colour home-social-icons">
                   <AiFillInstagram />
                 </a>
               </li>

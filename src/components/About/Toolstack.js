@@ -26,6 +26,15 @@ function Toolstack() {
         <img src={as} alt="androidStudio" className="tech-icon-images" />
         <div className="tech-icons-text">Android Studio</div>
       </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/eclipse/eclipse-original.svg" alt="Eclipse" className="tech-icon-images" />
+        <div className="tech-icons-text">Eclipse</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rstudio/rstudio-original.svg" alt="RStudio" className="tech-icon-images" />
+        <div className="tech-icons-text">RStudio</div>
+      </Col>
+
     </Row>
   );
 }

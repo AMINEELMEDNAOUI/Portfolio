@@ -1,8 +1,20 @@
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
 import { Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next"; // Import du hook
 
 function Github() {
+  const { t } = useTranslation(); // Initialisation
+
+  // Optionnel : Traduction des étiquettes du calendrier (Moins / Plus)
+  const calendarLabels = {
+    totalCount: t("github.contributions", { count: "{{count}}" }),
+    legend: {
+      less: t("github.less", "Less"),
+      more: t("github.more", "More"),
+    }
+  };
+
   return (
     <Row
       style={{
@@ -12,7 +24,7 @@ function Github() {
       }}
     >
       <h1 className="project-heading pb-4" style={{ paddingBottom: "20px" }}>
-        Days I <strong className="purple">Code</strong>
+        {t("github.days")} <strong className="purple">{t("github.code")}</strong>
       </h1>
       <GitHubCalendar
         username="AMINEELMEDNAOUI"
@@ -20,6 +32,7 @@ function Github() {
         blockMargin={10}
         color="#c084f5"
         fontSize={20}
+        labels={calendarLabels} // Applique les traductions au calendrier lui-même
       />
     </Row>
   );

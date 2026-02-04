@@ -2,57 +2,60 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/AMINE_EL_MEDNAOUI.jpg";
 import Tilt from "react-parallax-tilt";
+import { useTranslation } from "react-i18next"; // 1. Import
 
 function Home2() {
+  const { t } = useTranslation(); // 2. Initialisation
+
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              {t("home2.title")} <span className="purple"> {t("home2.title_purple")} </span> {t("home2.title_end")}
             </h1>
             <p className="home-about-body">
-              I'm Software Engineer graduate with a Master's degree in Big Data and Internet of Things from the National School of Arts and Crafts of Casablanca (ENSAM), passionate about transforming concepts into reliable and scalable solutions. Possessing dual expertise in Full-Stack Development and Big Data & IoT Systems, I specialize in building high-performance applications, from system architecture to intuitive user experiences. My goal is to design and integrate efficient business process management systems, ensuring operational effectiveness and contributing to key organizational objectives.
+              {t("home2.body_1")}
               <br />
               <br />
-              I’m proficient in
+              {t("home2.proficient")}
               <i>
                 <b className="purple">
                   {" "}
                   JavaScript , NodeJS , Java , C++ , Python , et ReactJS.{" "}
                 </b>
               </i>
-              — and I enjoy working across both backend and frontend stacks.
+              {t("home2.stack_end")}
               <br />
               <br />
-              My key areas of interest include developing
+              {t("home2.interests")}
               <i>
                 <b className="purple">
                   {" "}
-                  Web Applications, {" "}
+                  {t("home2.interest_web")}{" "}
                 </b>
               </i>
-              designing Efficient
+              {t("home2.designing")}
               <i>
                 <b className="purple">
                   {" "}
-                  Business Process Solutions (BPM/ERP), {" "}
+                  {t("home2.interest_bpm")}{" "}
                 </b>
               </i>
-              and exploring
+              {t("home2.exploring")}
               <i>
                 <b className="purple">
                   {" "}
-                  AI, Big Data & IoT Systems. {" "}
+                  {t("home2.interest_ai")}{" "}
                 </b>
               </i>
               <br />
               <br />
-              Whenever possible, I love building projects with
-              <b className="purple"> Node.js </b> and modern frameworks like{" "}
+              {t("home2.build_with")}
+              <b className="purple"> Node.js </b> {t("home2.and_modern")}{" "}
               <i>
-                <b className="purple">React.js</b> and{" "}
+                <b className="purple">React.js</b> et{" "}
                 <b className="purple">Next.js</b>.
               </i>
             </p>

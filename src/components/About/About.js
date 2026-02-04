@@ -6,11 +6,13 @@ import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import { useTranslation } from "react-i18next"; // 1. Import du hook
 
 function About() {
+  const { t } = useTranslation(); // 2. Initialisation
+
   return (
     <>
-      {" "}
       <Particle />
       <Container fluid className="about-section">
         <Container>
@@ -24,7 +26,7 @@ function About() {
               }}
             >
               <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-                Know Who <strong className="purple">I'M</strong>
+                {t("about.title")} <strong className="purple">{t("about.im")}</strong>
               </h1>
               <Aboutcard />
             </Col>
@@ -36,15 +38,17 @@ function About() {
               <img src={laptopImg} alt="about" className="img-fluid" />
             </Col>
           </Row>
+
           <h1 className="project-heading">
-            Professional <strong className="purple">Skillset </strong>
+            {t("about.skillset")} <strong className="purple">{t("about.skillset_strong")}</strong>
           </h1>
 
           <Techstack />
 
           <h1 className="project-heading">
-            <strong className="purple">Tools</strong> I use
+            <strong className="purple">{t("about.tools_strong")}</strong> {t("about.tools_text")}
           </h1>
+
           <Toolstack />
 
           <Github />

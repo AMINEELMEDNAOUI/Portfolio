@@ -1,0 +1,110 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "about": "À propos",
+        "projects": "Projets",
+        "resume": "CV",
+        "contact": "Me contacter",
+        "english": "Anglais",
+        "french": "Français"
+    },
+    "home": {
+        "greeting": "Bonjour !",
+        "im": "JE SUIS",
+        "find_me": "RETROUVEZ-MOI SUR",
+        "connect": "N'hésitez pas à me",
+        "connect_purple": "contacter",
+        "connect_end": ""
+    },
+    "resume": {
+        "download": "Télécharger le CV "
+    },
+    "about": {
+        "title": "Découvrez qui",
+        "im": "JE SUIS",
+        "skillset": "Compétences",
+        "skillset_strong": "Professionnelles",
+        "tools_strong": "Outils",
+        "tools_text": "que j'utilise"
+    },
+    "aboutCard": {
+        "hi": "Bonjour à tous ! Je suis",
+        "from": "de",
+        "working": "Je travaille actuellement en tant que",
+        "at": "chez",
+        "degree": "Je suis titulaire d'un Master en",
+        "school": "de l'",
+        "hobbies_title": "En dehors du code, j'aime m'engager dans des activités qui me stimulent et m'inspirent :",
+        "hobby_1": "Jouer aux jeux vidéo 🎮",
+        "hobby_2": "Jouer au football ⚽",
+        "hobby_3": "Voyager et explorer de nouveaux endroits 🌍",
+        "quote": "Le seul moyen de faire du bon travail est d'aimer ce que l'on fait !"
+    },
+    "github": {
+        "days": "Mes jours de",
+        "code": "Code",
+        "less": "Moins",
+        "more": "Plus",
+        "contributions": "{{count}} contributions l'année dernière"
+    },
+    "contact": {
+        "title": "CONTACTEZ",
+        "me": "-MOI",
+        "sub": "N'hésitez pas à",
+        "reach": "me contacter",
+        "to_me": "!",
+        "label_name": "Nom",
+        "label_email": "Email",
+        "label_message": "Message",
+        "placeholder_name": "Votre nom",
+        "placeholder_email": "nom@exemple.com",
+        "placeholder_message": "Votre message...",
+        "send": "Envoyer le message",
+        "alert_success_title": "Message envoyé !",
+        "alert_success_text": "Amine vous répondra très bientôt.",
+        "alert_error_title": "Oups...",
+        "alert_error_text": "Une erreur est survenue lors de l'envoi du message."
+    },
+    "home2": {
+        "title": "LAISSEZ-MOI ME",
+        "title_purple": "PRÉSENTER",
+        "title_end": "",
+        "body_1": "Je suis un ingénieur logiciel diplômé d'un Master en Big Data et Internet des Objets de l'École Nationale Supérieure d'Arts et Métiers de Casablanca (ENSAM), passionné par la transformation de concepts en solutions fiables et évolutives. Doté d'une double expertise en développement Full-Stack et en systèmes Big Data & IoT, je me spécialise dans la création d'applications performantes, de l'architecture système aux expériences utilisateur intuitives. Mon objectif est de concevoir et d'intégrer des systèmes de gestion de processus métier efficaces, garantissant l'efficacité opérationnelle et contribuant aux objectifs stratégiques de l'organisation.",
+        "proficient": "Je maîtrise",
+        "stack_end": "— et j'apprécie travailler sur l'ensemble des stacks backend et frontend.",
+        "interests": "Mes principaux domaines d'intérêt incluent le développement d'",
+        "interest_web": "Applications Web,",
+        "designing": "la conception de",
+        "interest_bpm": "Solutions de Processus Métier (BPM/ERP),",
+        "exploring": "et l'exploration de l'",
+        "interest_ai": "IA, du Big Data et des systèmes IoT.",
+        "build_with": "Dès que possible, j'aime construire des projets avec",
+        "and_modern": "et des frameworks modernes comme"
+    },
+    "type": {
+        "software": "Ingénieur Logiciel",
+        "fullstack": "Développeur Full Stack",
+        "mern": "Développeur Stack MERN",
+        "bpm": "Spécialiste Intégration BPM/ERP"
+    },
+    "projects": {
+        "title": "Mes travaux",
+        "title_purple": "récents",
+        "subtitle": "Voici quelques projets sur lesquels j'ai travaillé récemment.",
+        "p1_title": "Wavesoft",
+        "p1_desc": "Conception et mise en œuvre d'une solution d'achat automatisée en intégrant BonitaSoft BPM avec l'ERP WaveSoft pour moderniser le flux de travail existant. En remplaçant le système VDoc obsolète par des processus modélisés en BPMN et des interfaces utilisateur sur mesure, j'ai optimisé le cycle de vie des achats et amélioré l'efficacité opérationnelle. La solution dispose d'une application web centralisée offrant un suivi en temps réel des demandes d'achat, de la gestion des devis et des sorties de stock, garantissant une chaîne d'approvisionnement transparente.",
+        "p2_title": "RemoteCheck",
+        "p2_desc": "Conception et mise en œuvre d'une interface web spécialisée utilisant la pile MERN (MySQL, Express, React et Node.js) pour moderniser le suivi des présences des employés sur les sites opérationnels distants. En collaborant avec une équipe interfonctionnelle, j'ai conçu un système de gestion robuste remplaçant les rapports manuels par un flux numérique simplifié. La solution finale offre une surveillance en temps réel de la présence des effectifs, améliorant considérablement la précision des données et la transparence opérationnelle.",
+        "p3_title": "Brimed Academy",
+        "p3_desc": "Conception et développement d'une plateforme d'éducation en ligne, un écosystème de gestion complet pour un centre de soutien scolaire, s'appuyant sur une architecture full-stack moderne avec ReactJS et Spring Boot. J'ai conçu une plateforme centralisée qui numérise l'ensemble du flux académique, de l'inscription des étudiants et des enseignants à la planification automatisée des cours et au traitement des paiements. La solution a éliminé les goulots d'étranglement administratifs en offrant une synchronisation des données en temps réel.",
+        "p4_title": "Contrôleur de présentation PPT",
+        "p4_desc": "Conception d'un système innovant de contrôle de présentation par gestes utilisant la vision par ordinateur et le Machine Learning. En implémentant un réseau de neurones pour reconnaître et classer les gestes de la main en temps réel, j'ai développé une interface fluide qui traduit les mouvements physiques (pointer ou dessiner) en commandes système. Cette solution remplace les dispositifs d'entrée traditionnels, offrant une expérience utilisateur plus intuitive et interactive pour les présentations numériques.",
+        "p5_title": "Système de reconnaissance faciale",
+        "p5_desc": "Conception et développement d'une solution de présence biométrique intelligente pour automatiser l'enregistrement des étudiants et simplifier la gestion des classes. En remplaçant les appels traditionnels par la reconnaissance faciale en temps réel, le système offre une méthode sans contact et anti-fraude pour vérifier l'identité des étudiants. J'ai implémenté une architecture robuste de créneaux horaires alignée sur les horaires académiques, permettant un suivi précis sur plusieurs périodes de cours tout en intégrant une couche de validation.",
+        "p6_title": "Système IoT Smart Office",
+        "p6_desc": "Conception d'un écosystème IoT complet conçu pour optimiser les conditions environnementales et l'efficacité opérationnelle au sein des espaces de travail modernes. En intégrant un réseau de capteurs et d'actionneurs, j'ai développé des systèmes de contrôle autonomes pour l'éclairage, le climat (température et humidité) et la gestion des stores afin de maximiser les économies d'énergie tout en améliorant le confort des utilisateurs. Le projet inclut également une couche de sécurité proactive avec détection de gaz en temps réel."
+    },
+    "footer": {
+        "dev_by": "Conçu et Développé par Amine El Mednaoui"
+    }
+}
