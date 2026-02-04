@@ -23,6 +23,23 @@ function MyBot() {
             {/* Style CSS injecté pour forcer le placeholder en Français */}
             <style>
                 {`
+                .react-chatbot-kit-chat-input {
+    font-size: 16px !important;
+}
+
+/* Ajustement pour que le chatbot ne disparaisse pas derrière le clavier */
+@media (max-width: 768px) {
+    .react-chatbot-kit-chat-container {
+        width: 100% !important;
+        height: 400px !important; /* Ajuste selon ton besoin */
+    }
+    
+    .react-chatbot-kit-chat-window {
+        bottom: 10px !important;
+        right: 0px !important;
+        width: 95vw !important;
+        margin: 0 auto;
+    }
                     .chatbot-container-fr .react-chatbot-kit-chat-input::placeholder {
                         color: transparent !important;
                     }
