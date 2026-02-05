@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chatbot from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
 import config from '../chatbot/config';
@@ -14,9 +14,27 @@ function MyBot() {
     const { i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const currentLang = i18n.language.split('-')[0];
+    const [showAutoTooltip, setShowAutoTooltip] = useState(false);
     const tooltipText = currentLang === 'fr'
         ? "Je suis le chatbot d'Amine, pose-moi une question..."
         : "I'm Amine's chatbot, ask me a question...";
+
+    useEffect(() => {
+        // Affiche le message 1.5s après l'ouverture de la page
+        const timer = setTimeout(() => {
+            setShowAutoTooltip(true);
+        }, 1500);
+
+        // Optionnel : Cache le message après 8 secondes pour ne pas encombrer
+        const hideTimer = setTimeout(() => {
+            setShowAutoTooltip(false);
+        }, 8000);
+
+        return () => {
+            clearTimeout(timer);
+            clearTimeout(hideTimer);
+        };
+    }, []);
 
     return (
         <div className="chatbot-container" style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
@@ -61,27 +79,46 @@ function MyBot() {
                     }
 
                     
-                    .custom-tooltip {
-                        position: absolute;
-                        right: 80px; /* Position à gauche du bouton */
-                        background-color: rgba(0, 0, 0, 0.8);
-                        color: #c770f0; 
-                        font-weight: bold;
-                        padding: 10px 15px;
-                        border-radius: 8px;
-                        font-family: 'Courier New', Courier, monospace;
-                        font-size: 13px;
-                        white-space: nowrap;
-                        visibility: hidden;
-                        opacity: 0;
-                        transition: opacity 0.3s ease;
-                        border: 1px solid #30275a;
-                        box-shadow: 0 4px 10px #c770f0;
-                        white-space: normal;       /* Permet de retourner à la ligne */
-    word-wrap: break-word;     /* Coupe les mots si nécessaire */
-    max-width: 200px;          /* Limite la largeur pour forcer le retour à la ligne */
-    width: max-content;
-                    }
+                   /* --- STYLE PC (Inchangé) --- */
+.custom-tooltip {
+    position: absolute;
+    right: 80px; 
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #c770f0; 
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    white-space: nowrap;
+    
+    /* État initial : Invisible mais à sa place réelle */
+    opacity: 0;
+    /* On utilise une transition lente pour l'opacité uniquement */
+    transition: opacity 1.2s ease-in-out; 
+    
+    border: 1px solid #30275a;
+    box-shadow: 0 4px 15px rgba(199, 112, 240, 0.4);
+    pointer-events: none;
+}
+
+/* État actif déclenché par le JS : Apparition douce */
+.custom-tooltip.active {
+    opacity: 1;
+}
+
+/* --- FORCE 2 LIGNES SUR MOBILE SEULEMENT --- */
+@media (max-width: 768px) {
+    .custom-tooltip {
+        white-space: normal;    /* Autorise le retour à la ligne */
+        display: block;         /* S'assure que le bloc prend la largeur imposée */
+        width: max-content;           /* Largeur précise pour forcer la coupure en 2 lignes */
+        max-width: 200px;       
+        text-align: center;     /* Optionnel : centre le texte pour un meilleur look */
+        font-size: 11px;
+        right: 75px;            /* Ajuste la position pour ne pas toucher le bouton */
+    }
+}
 
                     
                     .bot-button-wrapper:hover .custom-tooltip {
@@ -127,7 +164,9 @@ function MyBot() {
                 </div>
             )}
             <div className="bot-button-wrapper">
-                {!isOpen && <div className="custom-tooltip">{tooltipText}</div>}
+                {!isOpen && <div className={`custom-tooltip ${showAutoTooltip ? 'active' : ''}`}>
+                    {tooltipText}
+                </div>}
                 <button
 
                     onClick={() => setIsOpen(!isOpen)}
