@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Chatbot from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
 import config from '../chatbot/config';
@@ -15,6 +15,7 @@ function MyBot() {
     const [isOpen, setIsOpen] = useState(false);
     const currentLang = i18n.language.split('-')[0];
     const [showAutoTooltip, setShowAutoTooltip] = useState(false);
+    const chatbotConfig = useMemo(() => config(currentLang), [currentLang]);
     const tooltipText = currentLang === 'fr'
         ? "Je suis le chatbot d'Amine, pose-moi une question..."
         : "I'm Amine's chatbot, ask me a question...";
@@ -153,12 +154,9 @@ function MyBot() {
                     }}>
                     <Chatbot
                         // On passe bien currentLang à la config
-                        config={config(currentLang)}
+                        config={chatbotConfig}
                         messageParser={MessageParser}
                         actionProvider={ActionProvider}
-                        // La clé force le bot à se reconstruire avec les bons messages initiaux
-                        key={currentLang}
-                        // Optionnel : placeholder direct si ta version le supporte
                         placeholderText={currentLang === 'fr' ? "Écrivez votre message ici..." : "Write your message here..."}
                     />
                 </div>

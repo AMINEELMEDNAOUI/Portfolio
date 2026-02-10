@@ -57,20 +57,49 @@ function About() {
         </Container>
       </Container>
       <style>{`
-  /* On cible le conteneur généré par la bibliothèque GitHub Calendar */
+  /* Conteneur principal du calendrier */
   .github-wrap-container .react-activity-calendar {
+    width: 100% !important;
     display: flex !important;
-    flex-wrap: wrap !important; /* Force le retour à la ligne */
-    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
-  /* On s'assure que les graphiques internes ne dépassent pas */
+  /* --- LE FIX POUR YEARLESS --- */
+  /* Cible le footer qui contient le texte et la légende */
+  .github-wrap-container .react-activity-calendar__footer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; /* Force l'écartement gauche/droite */
+    align-items: center !important;
+    width: 100% !important;
+    padding-top: 15px !important;
+    
+  }
+
+  /* Cible spécifiquement la légende (Less/More) pour la garder groupée à droite */
+  .github-wrap-container .react-activity-calendar__legend {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+  }
+
+  /* Empêche le chevauchement sur les petits écrans */
+  @media (max-width: 600px) {
+    .github-wrap-container .react-activity-calendar__footer {
+      flex-direction: column !important;
+      gap: 10px !important;
+      font-size: 14px !important;
+    }
+  }
+    
+
+  /* Vos autres styles existants */
   .github-wrap-container svg {
     max-width: 100% !important;
     height: auto !important;
   }
 
-  /* Fix pour le texte étiré sur mobile */
   .about-section p, .about-card p {
     text-align: left !important;
     word-spacing: normal !important;
@@ -78,7 +107,8 @@ function About() {
 
   @media (max-width: 767px) {
     .about-section {
-      overflow-x: hidden !important; /* Empêche tout scroll horizontal parasite */
+      overflow-x: hidden !important;
+      font-size: 16px !important;
     }
   }
 `}</style>

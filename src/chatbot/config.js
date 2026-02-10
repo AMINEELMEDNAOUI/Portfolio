@@ -15,13 +15,15 @@ const config = (language) => {
         // SEUL AJOUT : Traduction du champ de saisie
         placeholderText: language === 'fr' ? "Écrivez votre message ici..." : "Write your message here...",
 
-        initialMessages: savedMessages || [
-            createChatBotMessage(
-                language === 'fr'
-                    ? "Bonjour ! Je suis l'IA d'Amine. Posez-moi une question sur son parcours ou ses projets."
-                    : "Hello! I'm Amine's AI. Ask me about my background or my projects."
-            ),
-        ],
+        initialMessages: savedMessages && savedMessages.length > 0
+            ? savedMessages
+            : [
+                createChatBotMessage(
+                    language === 'fr'
+                        ? "Bonjour ! Je suis l'IA d'Amine. Posez-moi une question sur son parcours ou ses projets."
+                        : "Hello! I'm Amine's AI. Ask me about my background or my projects."
+                ),
+            ],
         customStyles: {
             botMessageBox: { backgroundColor: "#c084f5" },
             chatButton: { backgroundColor: "#c084f5" },

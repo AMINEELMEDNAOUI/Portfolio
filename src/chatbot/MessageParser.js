@@ -4,126 +4,96 @@ class MessageParser {
     }
 
     parse(message) {
-        const text = message.toLowerCase();
+        const text = this.normalize(message);
+        const words = text.split(/\s+/);
 
-        // 1. POLITESSE & HUMEUR
-        if (this.contains(text, ["hi", "hello", "bonjour", "salut", "hey"])) {
-            return this.actionProvider.handleResponse("greeting");
-        }
-        if (this.contains(text, ["cv", "ca va", "ça va", "comment vas", "how are you"])) {
-            return this.actionProvider.handleResponse("status");
-        }
-        if (this.contains(text, ["merci", "thanks", "thank you", "cool", "super"])) {
-            return this.actionProvider.handleResponse("thanks");
+
+        const categories = [
+            { id: "help", keywords: ["help", "aide", "aid", "can you help", "tu peux m aider", "peux tu m aider", "aide moi", "assist me", "support", "que peux tu faire", "what can you do", "what do you do", "what are you able to do", "how can you help", "comment tu peux m aider"] },
+            { id: "status", keywords: ["how are you", "how r u", "how are u", "how ru", "hru", "how you doing", "how are you doing", "how do you do", "how is it going", "how its going", "how's it going", "how are things", "how are you today", "are you ok", "you ok", "u ok", "are u ok", "are you fine", "you good", "u good", "what s up", "whats up", "wassup", "sup", "wsup", "cv", "ca va", "ça va", "sa va", "sava", "cava", "comment ca va", "comment ça va", "comment tu vas", "comment vas tu", "comment vas", "tu vas bien", "ça roule", "ca roule", "tu vas comment", "tout va bien", "bien ou quoi", "tranquille", "ça dit quoi", "ca dit quoi", "labas", "labass", "labes", "kidayr", "kidayra", "kidayr a khouya", "kidayr a sadiqi", "kif dayr", "kifach dayr", "chno l7al", "ach khbar", "ash khbar", "kifach", "kif halek", "kif halk"] },
+            { id: "greeting", keywords: ["hi", "hii", "hiii", "hey", "heyy", "heyyy", "yo", "yoo", "yooo", "hello", "helloo", "hellooo", "hola", "bonjour", "bonsoir", "salut", "slt", "cc", "coucou", "coucouu", "salam", "salam aleykoum", "salam alaykoum", "salam alikoum", "slm", "aslam", "assalam", "assalamou alaykoum", "ahlan", "ahlan wa sahlan", "marhaba", "mrhba", "labas 3lik", "wakha", "wesh", "wsh", "wech", "saha", "sba7 lkhir", "sbah lkhir", "msa lkhir", "masa lkhir"] },
+            { id: "presentation", keywords: ["who are you", "who r u", "who are u", "who ru", "what are you", "what r u", "what is this", "what is your name", "what s your name", "whats your name", "your name", "name", "qui es tu", "qui es-tu", "tu es qui", "t es qui", "c est qui", "c est quoi", "c est quoi ton nom", "ton nom", "tu t appelles comment", "presente toi", "présente toi", "presentation", "présentation", "c est quoi ton role", "ton role", "tu fais quoi", "que fais tu", "que peux tu faire", "tu sers a quoi", "chkon nta", "chkon nti", "chkoun nta", "chkoun nti", "chno smitek", "chno smiytek", "smitek", "smiytek", "ach katdir", "ach katdir hna"] },
+            { id: "bot_identity", keywords: ["are you a robot", "are you robot", "are you human", "are you ai", "are you chatgpt", "are you an ai", "are you real", "bot", "robot", "ai", "artificial intelligence", "tu es un robot", "tu es robot", "tu es humain", "tu es une ia", "tu es chatgpt", "tu es un bot", "t es un bot", "t es une ia", "tu es une machine", "machine", "intelligence artificielle", "wach nta robot", "wach nta bot", "wach nta insan", "nta ia", "nti ia"] },
+            { id: "languages", keywords: ["languages", "language", "what languages", "which languages", "do you speak", "can you speak", "speak english", "do you speak french", "do you speak arabic", "speak french", "speak arabic", "speak english", "tu parle", "tu parles", "tu parle francais", "tu parles francais", "tu parle français", "tu parles français", "tu parle anglais", "tu parles anglais", "tu parle arabe", "tu parles arabe", "parle francais", "parle français", "parle anglais", "parle arabe", "langue", "langues", "english", "french", "arabic", "anglais", "francais", "français", "arabe", "wach kat3ref t hdar francais", "wach kat3ref t hdar anglais", "wach kat3ref t hdar arabe", "kat3ref t hdar"] },
+            { id: "location", keywords: ["where do you live", "where does he live", "where is he from", "where are you from", "where are you located", "city", "country", "location", "address", "ou habite", "ou est", "tu habite ou", "ou vit", "ville", "pays", "localisation", "casablanca", "casa", "maroc", "morocco", "rabat", "tanger", "fin sakn", "fin kay3ich", "mnin nta", "mnin howa", "fin kayn", "fin sakn amine"] },
+            { id: "age", keywords: ["age", "his age", "her age", "your age", "how old", "how old are you", "how old is he", "how old is amine", "what is his age", "what s his age", "what is your age", "age of amine", "âge", "tu as quel age", "tu as quel âge", "quel age", "quel âge", "il a quel age", "amine a quel age", "amine age", "ch7al 3mrk", "ch7al 3mro", "ch7al 3mr amine", "3mrk", "3mro", "3omr"] },
+            { id: "formation", keywords: ["education", "study", "studies", "degree", "university", "school", "master", "bachelor", "diploma", "graduation", "etude", "étude", "etudes", "études", "formation", "diplome", "diplôme", "universite", "université", "ecole", "école", "ensam", "fsbm", "ben msik", "licence", "master", "fin qra", "chno qra", "ach qra", "education dyalo", "diplome dyalo", "wach 3ndo master"] },
+            { id: "bac", keywords: ["bac", "baccalaureat", "baccalauréat", "high school diploma", "high school", "mention", "biof", "physical sciences", "science physique", "science physiques", "wach jab bac", "chno jab f bac", "mention f bac"] },
+            { id: "experience", keywords: ["experience", "work experience", "job", "jobs", "career", "internship", "intern", "training", "company", "companies", "exp", "stage", "travail", "travaille", "travaille t", "emploi", "poste", "carriere", "carrière", "dsi", "dsi conseils", "bg partner", "bg partners", "wach khdam", "fin khdam", "khdma", "khdam"] },
+            { id: "work_place", keywords: ["where does amine work", "where does he work", "current job", "current company", "current employer", "work place", "where is he working", "where is he working now", "ou travaille", "ou il travaille", "amine travaille ou", "entreprise actuelle", "employeur", "travaille chez", "fin khdam daba", "fin kaykhdam daba", "chno charika dyalo"] },
+            { id: "dsi_mission", keywords: ["mission", "role", "task", "tasks", "what does he do", "what is his role", "what is he doing", "responsibilities", "rôle", "tache", "tâche", "fait quoi", "fait quoi chez dsi", "que fais il chez dsi", "dsi mission", "ach kaydir f dsi", "chno kaydir f dsi"] },
+            { id: "projects", keywords: ["projects", "project", "portfolio", "work", "apps", "applications", "personal projects", "side projects", "projet", "projets", "portfolio", "realisations", "réalisations", "travaux", "application", "applications", "ach dar", "chno dar", "projects dyalo"] },
+            { id: "project_bpm", keywords: ["bpm", "bonita", "bonitasoft", "wavesoft", "wave soft", "erp", "purchase", "purchasing", "achat", "workflow", "processus achat", "process", "automation", "processus", "bonita bpm", "erp wavesoft"] },
+            { id: "project_pointage", keywords: ["attendance", "check in", "check-in", "presence", "clock in", "time tracking", "tracking", "employee attendance", "pointage", "présence", "presence", "gestion presence", "gestion des presences", "gestion des présences", "pointage app", "systeme pointage"] },
+            { id: "competences", keywords: ["skills", "skill", "tech stack", "stack", "technologies", "tools", "programming languages", "frameworks", "competence", "compétence", "competences", "compétences", "techno", "langage", "code", "framework", "backend", "frontend", "react", "angular", "nestjs", "spring boot", "node", "nodejs", "java", "python", "sql", "docker", "aws"] },
+            { id: "bigdata_specific", keywords: ["big data", "data", "data engineer", "data engineering", "etl", "pipeline", "hadoop", "spark", "kafka", "mapreduce", "nosql", "ingenieur data", "data engineer", "bigdata"] },
+            { id: "ai_opinion", keywords: ["ai", "ia", "artificial intelligence", "intelligence artificielle", "machine learning", "deep learning", "ml", "dl", "tensorflow", "pytorch", "scikit learn", "scikit-learn", "chatgpt", "openai"] },
+            { id: "certifications", keywords: ["certification", "certifications", "certificate", "certificates", "aws", "scrum", "psm", "sfpc", "certif", "certifs", "certification scrum", "certification aws"] },
+            { id: "soft_skills", keywords: ["soft skills", "softskill", "strength", "strengths", "qualities", "quality", "teamwork", "leadership", "qualite", "qualité", "atout", "point fort", "personnalite", "personnalité"] },
+            { id: "weakness", keywords: ["weakness", "weaknesses", "bad point", "negative", "defaut", "défaut", "faiblesse", "point faible"] },
+            { id: "hobbies", keywords: ["hobby", "hobbies", "free time", "what do you do for fun", "sport", "sports", "passion", "loisir", "loisirs", "passion", "sport", "tu fais quoi"] },
+            { id: "availability", keywords: ["availability", "available", "when can you start", "when are you available", "start date", "dispo", "disponible", "quand", "immédiat", "immediat", "recrute", "embauche", "cherche", "alternance", "cdi", "stage pre embauche", "stage pre-embauche"] },
+            { id: "salary", keywords: ["salary", "salaire", "pay", "money", "how much", "compensation", "remuneration", "rémunération", "expected salary", "desired salary"] },
+            { id: "relocation", keywords: ["relocation", "move", "moving", "abroad", "international", "france", "canada", "europe", "mobilite", "mobilité", "demmenage", "déménage", "etranger", "étranger", "bouger"] },
+            { id: "remote", keywords: ["remote", "work from home", "telework", "teleworking", "teletravail", "télétravail", "distance", "hybrid", "hybride"] },
+            { id: "team_work", keywords: ["team work", "teamwork", "team", "collaboration", "work in team", "working with team", "equipe", "équipe", "travail en equipe", "travail en équipe"] },
+            { id: "vision", keywords: ["future", "vision", "goal", "goals", "ambition", "in 5 years", "five years", "career plan", "futur", "avenir", "ambition", "objectif", "vision", "5 ans"] },
+            { id: "why_him", keywords: ["why him", "why should we hire", "why hire him", "why you", "why should i hire you", "why should we recruit you", "pourquoi toi", "pourquoi lui", "pourquoi recruter", "pourquoi embaucher", "pourquoi choisir"] },
+            { id: "contact", keywords: ["contact", "email", "mail", "e mail", "phone", "telephone", "téléphone", "number", "numero", "numéro", "how can i contact", "how to contact", "reach him", "comment le contacter", "comment contacter amine", "write", "message"] },
+            { id: "socials", keywords: ["linkedin", "github", "instagram", "insta", "social", "social media", "profile", "links", "reseaux", "réseaux", "profil linkedin"] },
+            { id: "cv_download", keywords: ["cv", "resume", "curriculum", "cv pdf", "download cv", "get cv", "send cv", "telecharger cv", "télécharger cv"] },
+            { id: "thanks", keywords: ["merci", "thanks", "thank you", "thx", "ty", "parfait", "super", "cool", "top", "nice", "great"] }
+        ];
+
+        let bestMatch = { id: "fallback", score: 0 };
+
+        categories.forEach(category => {
+            let currentScore = 0;
+
+            category.keywords.forEach(key => {
+                const normalizedKey = this.normalize(key);
+
+                // 1. EXACT PHRASE MATCH (Highest Priority)
+                // If the user says exactly "who are you"
+                if (text === normalizedKey) {
+                    currentScore += 50;
+                }
+                // 2. PHRASE INCLUSION (Medium Priority)
+                // If "who are you" is part of a longer sentence
+                else if (text.includes(normalizedKey)) {
+                    currentScore += 25;
+                }
+                // 3. INDIVIDUAL WORD MATCH (Lowest Priority)
+                // Splitting the keyword itself into words to check against user input
+                const keyWords = normalizedKey.split(/\s+/);
+                keyWords.forEach(word => {
+                    if (words.includes(word)) {
+                        currentScore += 2;
+                    }
+                });
+            });
+
+            if (currentScore > bestMatch.score) {
+                bestMatch = { id: category.id, score: currentScore };
+            }
+        });
+
+        // Seuil de confiance : higher threshold since exact matches give more points
+        if (bestMatch.score < 5) {
+            return this.actionProvider.handleResponse("fallback");
         }
 
-        // 2. IDENTITÉ & LOCALISATION
-        if (this.contains(text, ["qui es-tu", "who are you", "c'est qui", "présente", "presentation"])) {
-            return this.actionProvider.handleResponse("presentation");
-        }
-        if (this.contains(text, ["habite", "live", "ville", "city", "casa", "maroc", "morocco"])) {
-            return this.actionProvider.handleResponse("location");
-        }
-        if (this.contains(text, ["age", "âge", "old"])) {
-            return this.actionProvider.handleResponse("age");
-        }
-
-        // 3. TECHNIQUE & PROJETS
-        if (this.contains(text, ["projet", "réalisations", "portfolio", "project", "work"])) {
-            return this.actionProvider.handleResponse("projects");
-        }
-        if (this.contains(text, ["skill", "compétence", "techno", "stack", "langage", "code"])) {
-            return this.actionProvider.handleResponse("competences");
-        }
-        if (this.contains(text, ["big data", "hadoop", "spark", "kafka", "data"])) {
-            return this.actionProvider.handleResponse("bigdata_specific");
-        }
-        if (this.contains(text, ["ia", "ai", "machine learning", "deep learning", "intelligence"])) {
-            return this.actionProvider.handleResponse("ai_specific");
-        }
-
-        // 4. PARCOURS & CONTACT
-        if (this.contains(text, ["etude", "formation", "study", "diplome", "ensam", "master"])) {
-            return this.actionProvider.handleResponse("formation");
-        }
-        if (this.contains(text, ["exp", "stage", "internship", "dsi", "bg partner"])) {
-            return this.actionProvider.handleResponse("experience");
-        }
-        if (this.contains(text, ["github", "linkedin", "insta", "social", "cv pdf"])) {
-            return this.actionProvider.handleResponse("socials");
-        }
-        if (this.contains(text, ["contact", "email", "mail", "écrire", "write"])) {
-            return this.actionProvider.handleResponse("contact");
-        }
-
-        // 5. PERSONNALITÉ (Soft Skills)
-        if (this.contains(text, ["pourquoi toi", "qualité", "soft skills", "personnalité", "hobby", "loisir"])) {
-            return this.actionProvider.handleResponse("personality");
-        }
-        if (this.contains(text, ["bac", "biologie", "physique", "mention"])) return this.actionProvider.handleResponse("bac");
-        if (this.contains(text, ["bpm", "bonitasoft", "wavesoft", "achat"])) return this.actionProvider.handleResponse("project_bpm");
-        if (this.contains(text, ["pointage", "présence", "attendance"])) return this.actionProvider.handleResponse("project_pointage");
-        if (this.contains(text, ["faculté", "ben msik", "fsbm"])) return this.actionProvider.handleResponse("formation");
-
-        // Disponibilité & Alternance
-        if (this.contains(text, ["dispo", "quand", "disponible", "cherche", "embauche", "recrute", "alternance"]))
-            return this.actionProvider.handleResponse("availability");
-
-        // Langues
-        if (this.contains(text, ["langue", "parle", "anglais", "français", "english", "french", "arabic"]))
-            return this.actionProvider.handleResponse("languages");
-
-        // Qualités & Soft Skills
-        if (this.contains(text, ["qualité", "atout", "point fort", "humain", "soft skill", "personnalité"]))
-            return this.actionProvider.handleResponse("soft_skills");
-
-        // Loisirs
-        if (this.contains(text, ["loisir", "hobby", "hobbies", "sport", "fais quoi", "passion"]))
-            return this.actionProvider.handleResponse("hobbies");
-
-        // Détails sur sa mission actuelle
-        if (this.contains(text, ["mission", "rôle", "tâche", "fait quoi chez dsi"]))
-            return this.actionProvider.handleResponse("dsi_mission");
-
-        // Méthode Agile
-        if (this.contains(text, ["agile", "scrum", "méthode", "organisation"]))
-            return this.actionProvider.handleResponse("scrum_detail");
-        // Remerciements
-        if (this.contains(text, ["merci", "thanks", "thank you", "thx", "remercie", "parfait", "super"])) {
-            return this.actionProvider.handleResponse("thanks");
-        }
-        // Salaire et Mobilité
-        if (this.contains(text, ["salaire", "argent", "salary", "paye", "combien"])) return this.actionProvider.handleResponse("salary");
-        if (this.contains(text, ["déplace", "bouger", "déménage", "relocation", "france", "canada", "étranger"])) return this.actionProvider.handleResponse("relocation");
-
-        // Qualités et Défauts
-        if (this.contains(text, ["défaut", "faiblesse", "weakness", "mauvais"])) return this.actionProvider.handleResponse("weakness");
-        if (this.contains(text, ["qualité", "atout", "soft skill", "personnalité", "strength"])) return this.actionProvider.handleResponse("soft_skills");
-
-        // Futur et Vision
-        if (this.contains(text, ["futur", "avenir", "5 ans", "ambition", "carrière", "vision"])) return this.actionProvider.handleResponse("vision");
-        if (this.contains(text, ["pourquoi toi", "pourquoi lui", "recruter", "embaucher", "why him"])) return this.actionProvider.handleResponse("why_him");
-
-        // Mode de travail
-        if (this.contains(text, ["télétravail", "remote", "distance", "maison"])) return this.actionProvider.handleResponse("remote");
-        if (this.contains(text, ["équipe", "seul", "team", "collaboration"])) return this.actionProvider.handleResponse("team_work");
-        if (this.contains(text, ["dispo", "quand", "available", "immédiat"])) return this.actionProvider.handleResponse("availability");
-
-        // Divers
-        if (this.contains(text, ["langue", "parle", "anglais", "english", "french"])) return this.actionProvider.handleResponse("languages");
-        if (this.contains(text, ["hobby", "loisir", "passion", "sport"])) return this.actionProvider.handleResponse("hobbies");
-        if (this.contains(text, ["ia", "ai", "intelligence artificielle", "chatgpt"])) return this.actionProvider.handleResponse("ai_opinion");
-        // Où travaille-t-il ?
-        if (this.contains(text, ["où travaille", "travaile amine", "where does amine work", "employeur", "entreprise actuelle", "current company", "work place", "works", "work", "travaille", "travail"])) {
-            return this.actionProvider.handleResponse("work_place");
-        }
-        // PAR DÉFAUT
-        this.actionProvider.handleResponse("fallback");
+        return this.actionProvider.handleResponse(bestMatch.id);
     }
-
-    // Petite fonction utilitaire pour simplifier la lecture
-    contains(text, keywords) {
-        return keywords.some(key => text.includes(key));
+    normalize(text) {
+        return text
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "") // Enlève les accents
+            .replace(/[^\w\s]/g, " ")       // Enlève la ponctuation
+            .replace(/\s+/g, " ")           // Enlève les espaces doubles
+            .trim();
     }
 }
+
 export default MessageParser;
