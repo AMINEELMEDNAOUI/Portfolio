@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import { useTranslation } from "react-i18next"; // Import pour la traduction
+import { useTranslation } from "react-i18next";
 
 // Imports des images
 import academy from "../../Assets/Projects/academy.png";
@@ -13,7 +13,7 @@ import face from "../../Assets/Projects/face.png";
 import bpmn from "../../Assets/Projects/BPMN.png";
 
 function Projects() {
-  const { t } = useTranslation(); // Initialisation du hook
+  const { t } = useTranslation();
 
   return (
     <Container fluid className="project-section">
@@ -27,7 +27,7 @@ function Projects() {
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
 
-          {/* Projet 1: Wavesoft */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={bpmn}
@@ -38,7 +38,7 @@ function Projects() {
             />
           </Col>
 
-          {/* Projet 2: RemoteCheck */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={pointage}
@@ -49,7 +49,7 @@ function Projects() {
             />
           </Col>
 
-          {/* Projet 3: Brimed Academy */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={academy}
@@ -60,7 +60,7 @@ function Projects() {
             />
           </Col>
 
-          {/* Projet 4: Gesture Control */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={pptpres}
@@ -71,7 +71,7 @@ function Projects() {
             />
           </Col>
 
-          {/* Projet 5: Face Recognition */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={face}
@@ -82,7 +82,7 @@ function Projects() {
             />
           </Col>
 
-          {/* Projet 6: Smart Office */}
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={so}

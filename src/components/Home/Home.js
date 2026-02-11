@@ -4,7 +4,7 @@ import homeLogo from "../../Assets/home-main.svg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import { useTranslation } from "react-i18next"; // Import
+import { useTranslation } from "react-i18next";
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -13,7 +13,7 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Home() {
-  const { t } = useTranslation(); // Initialisation
+  const { t } = useTranslation();
 
   return (
     <section>
@@ -61,7 +61,7 @@ function Home() {
               {t("home.connect")} <span className="purple">{t("home.connect_purple")} </span>{t("home.connect_end")}
             </p>
             <ul className="home-about-social-links">
-              {/* Tes liens sociaux restent identiques */}
+
               <li className="social-icons">
                 <a href="https://github.com/AMINEELMEDNAOUI" target="_blank" rel="noreferrer" className="icon-colour home-social-icons">
                   <AiFillGithub />

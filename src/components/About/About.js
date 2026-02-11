@@ -6,10 +6,10 @@ import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
-import { useTranslation } from "react-i18next"; // 1. Import du hook
+import { useTranslation } from "react-i18next";
 
 function About() {
-  const { t } = useTranslation(); // 2. Initialisation
+  const { t } = useTranslation();
 
   return (
     <>
@@ -57,7 +57,7 @@ function About() {
         </Container>
       </Container>
       <style>{`
-  /* Conteneur principal du calendrier */
+ 
   .github-wrap-container .react-activity-calendar {
     width: 100% !important;
     display: flex !important;
@@ -65,8 +65,7 @@ function About() {
     align-items: center !important;
   }
 
-  /* --- LE FIX POUR YEARLESS --- */
-  /* Cible le footer qui contient le texte et la légende */
+ 
   .github-wrap-container .react-activity-calendar__footer {
     display: flex !important;
     flex-direction: row !important;
@@ -77,14 +76,14 @@ function About() {
     
   }
 
-  /* Cible spécifiquement la légende (Less/More) pour la garder groupée à droite */
+  
   .github-wrap-container .react-activity-calendar__legend {
     display: flex !important;
     align-items: center !important;
     gap: 5px !important;
   }
 
-  /* Empêche le chevauchement sur les petits écrans */
+  
   @media (max-width: 600px) {
     .github-wrap-container .react-activity-calendar__footer {
       flex-direction: column !important;
@@ -94,7 +93,7 @@ function About() {
   }
     
 
-  /* Vos autres styles existants */
+ 
   .github-wrap-container svg {
     max-width: 100% !important;
     height: auto !important;

@@ -3,10 +3,10 @@ import emailjs from '@emailjs/browser';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Particle from '../Particle';
 import Swal from 'sweetalert2';
-import { useTranslation } from "react-i18next"; // 1. Ajout de l'import
+import { useTranslation } from "react-i18next";
 
 function Contact() {
-    const { t } = useTranslation(); // 2. Initialisation du hook
+    const { t } = useTranslation();
     const form = useRef();
 
     const sendEmail = (e) => {
@@ -19,8 +19,8 @@ function Contact() {
         )
             .then(() => {
                 Swal.fire({
-                    title: t("contact.alert_success_title"), // Traduit
-                    text: t("contact.alert_success_text"),   // Traduit
+                    title: t("contact.alert_success_title"),
+                    text: t("contact.alert_success_text"),
                     icon: 'success',
                     background: '#1a1421',
                     color: '#ffffff',
@@ -35,8 +35,8 @@ function Contact() {
             .catch((error) => {
                 console.error("Error:", error);
                 Swal.fire({
-                    title: t("contact.alert_error_title"), // Traduit
-                    text: t("contact.alert_error_text"),   // Traduit
+                    title: t("contact.alert_error_title"),
+                    text: t("contact.alert_error_text"),
                     icon: 'error',
                     background: '#1a1421',
                     color: '#fff',

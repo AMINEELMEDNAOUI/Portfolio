@@ -1,6 +1,6 @@
 import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
-// Correction de l'import : AMINE avec un 'I' et Assets avec 'A' majuscule
+
 import myAvatarImage from '../Assets/aminebott.webp';
 
 const config = (language) => {
@@ -12,7 +12,7 @@ const config = (language) => {
 
     return {
         botName: "AmineBot",
-        // SEUL AJOUT : Traduction du champ de saisie
+
         placeholderText: language === 'fr' ? "Écrivez votre message ici..." : "Write your message here...",
 
         initialMessages: savedMessages && savedMessages.length > 0

@@ -21,12 +21,12 @@ function MyBot() {
         : "I'm Amine's chatbot, ask me a question...";
 
     useEffect(() => {
-        // Affiche le message 1.5s après l'ouverture de la page
+
         const timer = setTimeout(() => {
             setShowAutoTooltip(true);
         }, 1500);
 
-        // Optionnel : Cache le message après 8 secondes pour ne pas encombrer
+
         const hideTimer = setTimeout(() => {
             setShowAutoTooltip(false);
         }, 8000);
@@ -39,7 +39,7 @@ function MyBot() {
 
     return (
         <div className="chatbot-container" style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
-            {/* Style CSS injecté pour forcer le placeholder en Français */}
+
             <style>
                 {`
                     .chatbot-container-fr .react-chatbot-kit-chat-input::placeholder {
@@ -56,14 +56,14 @@ function MyBot() {
                     }
                         .react-chatbot-kit-chat-bot-message, 
 .react-chatbot-kit-chat-user-message {
-    max-width: 85% !important; /* Évite que la bulle colle au bord */
-    word-break: break-word !important; /* Coupe les mots trop longs */
+    max-width: 85% !important; 
+    word-break: break-word !important; 
     overflow-wrap: break-word !important;
-    white-space: pre-line !important; /* Respecte tes retours à la ligne \n */
+    white-space: pre-line !important; 
     line-height: 1.4 !important;
 }
 
-/* Fix spécifique pour le conteneur de texte interne */
+
 .react-chatbot-kit-chat-bot-message-container {
     display: flex;
     width: 100%;
@@ -80,7 +80,7 @@ function MyBot() {
                     }
 
                     
-                   /* --- STYLE PC (Inchangé) --- */
+                   
 .custom-tooltip {
     position: absolute;
     right: 80px; 
@@ -93,9 +93,9 @@ function MyBot() {
     font-size: 13px;
     white-space: nowrap;
     
-    /* État initial : Invisible mais à sa place réelle */
+   
     opacity: 0;
-    /* On utilise une transition lente pour l'opacité uniquement */
+    
     transition: opacity 1.2s ease-in-out; 
     
     border: 1px solid #30275a;
@@ -103,21 +103,21 @@ function MyBot() {
     pointer-events: none;
 }
 
-/* État actif déclenché par le JS : Apparition douce */
+
 .custom-tooltip.active {
     opacity: 1;
 }
 
-/* --- FORCE 2 LIGNES SUR MOBILE SEULEMENT --- */
+
 @media (max-width: 768px) {
     .custom-tooltip {
-        white-space: normal;    /* Autorise le retour à la ligne */
-        display: block;         /* S'assure que le bloc prend la largeur imposée */
-        width: max-content;           /* Largeur précise pour forcer la coupure en 2 lignes */
+        white-space: normal;    
+        display: block;         
+        width: max-content;           
         max-width: 200px;       
-        text-align: center;     /* Optionnel : centre le texte pour un meilleur look */
+        text-align: center;     
         font-size: 11px;
-        right: 75px;            /* Ajuste la position pour ne pas toucher le bouton */
+        right: 75px;           
     }
 }
 
@@ -147,13 +147,13 @@ function MyBot() {
                     style={{
                         marginBottom: '15px',
                         boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-                        // AJOUTE CES DEUX LIGNES ICI :
+
                         borderRadius: '10px',
                         overflow: 'hidden',
                         backgroundColor: 'transparent'
                     }}>
                     <Chatbot
-                        // On passe bien currentLang à la config
+
                         config={chatbotConfig}
                         messageParser={MessageParser}
                         actionProvider={ActionProvider}

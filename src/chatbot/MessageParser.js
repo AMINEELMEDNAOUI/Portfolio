@@ -53,18 +53,15 @@ class MessageParser {
             category.keywords.forEach(key => {
                 const normalizedKey = this.normalize(key);
 
-                // 1. EXACT PHRASE MATCH (Highest Priority)
-                // If the user says exactly "who are you"
+
                 if (text === normalizedKey) {
                     currentScore += 50;
                 }
-                // 2. PHRASE INCLUSION (Medium Priority)
-                // If "who are you" is part of a longer sentence
+
                 else if (text.includes(normalizedKey)) {
                     currentScore += 25;
                 }
-                // 3. INDIVIDUAL WORD MATCH (Lowest Priority)
-                // Splitting the keyword itself into words to check against user input
+
                 const keyWords = normalizedKey.split(/\s+/);
                 keyWords.forEach(word => {
                     if (words.includes(word)) {
@@ -78,7 +75,7 @@ class MessageParser {
             }
         });
 
-        // Seuil de confiance : higher threshold since exact matches give more points
+
         if (bestMatch.score < 5) {
             return this.actionProvider.handleResponse("fallback");
         }
@@ -89,9 +86,9 @@ class MessageParser {
         return text
             .toLowerCase()
             .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // Enlève les accents
-            .replace(/[^\w\s]/g, " ")       // Enlève la ponctuation
-            .replace(/\s+/g, " ")           // Enlève les espaces doubles
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^\w\s]/g, " ")
+            .replace(/\s+/g, " ")
             .trim();
     }
 }

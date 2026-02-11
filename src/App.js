@@ -7,7 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact";
-import MyBot from "./components/MyBot"; // 1. Importation du Chatbot
+import MyBot from "./components/MyBot";
 import {
   HashRouter as Router,
   Route,
@@ -45,7 +45,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
-        {/* 2. Affichage du Chatbot sur toutes les pages */}
         <MyBot />
 
         <Footer />

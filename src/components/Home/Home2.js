@@ -2,10 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/AMINE_EL_MEDNAOUI.jpg";
 import Tilt from "react-parallax-tilt";
-import { useTranslation } from "react-i18next"; // 1. Import
+import { useTranslation } from "react-i18next";
 
 function Home2() {
-  const { t } = useTranslation(); // 2. Initialisation
+  const { t } = useTranslation();
 
   return (
     <Container fluid className="home-about-section" id="about">

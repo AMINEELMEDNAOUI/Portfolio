@@ -57,13 +57,13 @@
 }
 
 
-/* Force la section contact à prendre toute la hauteur pour bloquer le footer en bas */
+
 #contact {
   min-height: 100vh !important;
   padding-bottom: 50px !important;
 }
 
-/* Désactive toute interaction avec les particules (le clic passera à travers) */
+
 #tsparticles,
 .particles-js-canvas-el,
 canvas {
@@ -71,19 +71,18 @@ canvas {
   z-index: -1 !important;
 }
 
-/* Style pour s'assurer que les inputs sont bien visibles et cliquables */
 .custom-input {
   background-color: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid #c770fe !important;
   color: white !important;
   position: relative !important;
   z-index: 100 !important;
-  /* Très élevé */
+
   pointer-events: auto !important;
-  /* Force la réactivation du clic */
+
 }
 
-/* Correction pour le bouton */
+
 .fork-btn-inner {
   position: relative !important;
   z-index: 100 !important;
@@ -93,23 +92,23 @@ canvas {
 .custom-input {
   background-color: transparent;
   color: #cfa9ff;
-  /* ta couleur violette */
+
   border: 1px solid #9b59ff;
 }
 
 .custom-input::placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
-  /* Blanc à 50% d'opacité */
+
   opacity: 1;
-  /* Nécessaire pour Firefox */
+
 }
 
-/* Optionnel : couleur quand on clique dans le champ */
+
 .custom-input:focus::placeholder {
   color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Quand on clique dedans */
+
 .custom-input:focus {
   background-color: transparent;
   color: #cfa9ff;
@@ -124,9 +123,9 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: white !important;
-  /* Couleur du texte */
+
   -webkit-box-shadow: 0 0 0px 1000px #1a1421 inset !important;
-  /* Couleur de fond de ton thème */
+
   transition: background-color 5000s ease-in-out 0s;
   border: 1px solid #c770fe !important;
 }
@@ -145,39 +144,38 @@ textarea:-webkit-autofill:focus {
 
 
 
-/* Assure que le texte du bouton principal (EN/FR) est blanc */
+
 .lang-menu-title {
   color: white !important;
   display: inline-flex !important;
   align-items: center;
 }
 
-/* Style de la popup (menu déroulant) */
+
 .language-dropdown-container .dropdown-menu {
   background-color: #1b1030 !important;
-  /* Fond sombre */
+
   border: 1px solid #c770fe !important;
-  /* Bordure violette */
+
 }
 
-/* Assure que le texte "English" et "Français" est bien blanc */
+
 .language-dropdown-container .dropdown-item {
   color: white !important;
-  /* <--- C'est ici que l'on fixe ton problème */
+
   background-color: transparent !important;
   padding: 10px 20px !important;
   display: flex !important;
   align-items: center;
 }
 
-/* Style au survol (hover) pour que l'on voit quelle option on sélectionne */
+
 .language-dropdown-container .dropdown-item:hover {
   background-color: #c770fe !important;
-  /* Fond violet au survol */
   color: white !important;
 }
 
-/* La petite flèche à côté de EN/FR */
+
 .language-dropdown-container .dropdown-toggle::after {
   color: white !important;
 }
@@ -187,43 +185,43 @@ textarea:-webkit-autofill:focus {
   position: relative !important;
   background-color: transparent !important;
   border: none !important;
-  /* On ajuste le padding bas pour aligner le texte avec les autres liens */
+
   padding-bottom: 2px !important;
   display: inline-flex !important;
   align-items: center;
 }
 
-/* 2. Création de la ligne violette (Match parfait avec Contact Me) */
+
 .language-dropdown-container .nav-link::after,
 .language-dropdown-container .dropdown-toggle::after {
   content: "" !important;
   position: absolute !important;
   display: block !important;
   width: 0;
-  /* Épaisseur de la ligne */
+
   height: 5px !important;
   background: #c770fe !important;
-  /* Position verticale : augmente ce chiffre pour remonter la ligne */
+
   bottom: -12px !important;
   left: 0 !important;
-  /* Supprime la flèche Bootstrap */
+
   border: none !important;
   transition: all 0.3s ease 0s !important;
 }
 
-/* 3. Animation au survol */
+
 .language-dropdown-container:hover .nav-link::after,
 .language-dropdown-container:hover .dropdown-toggle::after,
 .language-dropdown-container .show.dropdown-toggle::after {
   width: 100% !important;
 }
 
-/* 4. Style de la popup (Dropdown Menu) */
+
 .language-dropdown-container .dropdown-menu {
   background-color: #1b1030 !important;
   border: 1px solid #c770fe !important;
   margin-top: 15px !important;
-  /* Espace pour ne pas cacher la ligne */
+
 }
 
 .language-dropdown-container .dropdown-item {
@@ -237,7 +235,7 @@ textarea:-webkit-autofill:focus {
   background-color: #c770fe !important;
 }
 
-/* 5. Supprimer le contour bleu/blanc au clic */
+
 .language-dropdown-container .dropdown-toggle:focus {
   box-shadow: none !important;
   outline: none !important;

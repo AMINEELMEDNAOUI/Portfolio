@@ -11,10 +11,9 @@ class ActionProvider {
         const lang = localStorage.getItem('i18nextLng') || 'fr';
         const data = lang.includes('fr') ? frData : enData;
 
-        // On crée le message
+
         const message = this.createChatBotMessage(data[key] || data['fallback']);
 
-        // On ajoute les attributs personnalisés (Nom + Temps)
         message.customAuthor = "AMINE EL MEDNAOUI";
         message.customTime = lang.includes('fr') ? "à l'instant" : "just now";
 

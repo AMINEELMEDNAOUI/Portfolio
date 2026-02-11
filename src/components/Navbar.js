@@ -38,7 +38,7 @@ function NavBar() {
     updateExpanded(false);
   };
 
-  // Détermine le drapeau à afficher dans le titre du menu
+
   const currentFlag = i18n.language.startsWith("fr") ? "FR" : "GB";
 
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { ImPointRight } from "react-icons/im";
-import { useTranslation } from "react-i18next"; // Import du hook
+import { useTranslation } from "react-i18next";
 
 function AboutCard() {
-  const { t } = useTranslation(); // Initialisation
+  const { t } = useTranslation();
 
   return (
     <Card className="quote-card-view">

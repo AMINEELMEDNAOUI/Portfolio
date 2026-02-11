@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useTranslation } from "react-i18next"; // Import pour i18n
+import { useTranslation } from "react-i18next";
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -9,7 +9,7 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Footer() {
-  const { t } = useTranslation(); // Hook de traduction
+  const { t } = useTranslation();
   let date = new Date();
   let year = date.getFullYear();
 

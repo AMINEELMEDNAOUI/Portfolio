@@ -6,14 +6,14 @@ import pdfen from "../../Assets/../Assets/AMINE_EL_MEDNAOUI_CV_EN.pdf";
 import pdffr from "../../Assets/../Assets/AMINE_EL_MEDNAOUI_CV_FR.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
-import { useTranslation } from "react-i18next"; // Importation du hook
+import { useTranslation } from "react-i18next";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
-  const { t, i18n } = useTranslation(); // Initialisation de la traduction
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -22,7 +22,7 @@ function ResumeNew() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Sélection dynamique du fichier PDF basé sur la langue actuelle
+
   const currentPDF = i18n.language.startsWith("fr") ? pdffr : pdfen;
 
   return (
@@ -30,7 +30,7 @@ function ResumeNew() {
       <Container fluid className="resume-section">
         <Particle />
 
-        {/* --- SECTION BOUTON DE TÉLÉCHARGEMENT --- */}
+
         <Row
           style={{ justifyContent: "center", position: "relative", marginBottom: "-20px" }}
           className="mt-5"
@@ -53,7 +53,7 @@ function ResumeNew() {
           </Button>
         </Row>
 
-        {/* --- AFFICHAGE DU PDF DYNAMIQUE --- */}
+
         <Row className="resume">
           <Document file={currentPDF} className="d-flex justify-content-center">
             <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
