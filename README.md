@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Public/portfoliologo.png" alt="Logo" width="150">
+  <img src="Portfolio/Public/portfoliologo.jpg" alt="Logo" width="150">
 </p>
 
 <h1 align="center">Amine El Mednaoui | Portfolio</h1>
