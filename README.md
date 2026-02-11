@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  Bienvenue sur mon portfolio ! Je suis Amine, développeur passionné par la création d'expériences numériques fluides et esthétiques. Ce dépôt contient le code source de ma vitrine personnelle, conçue pour présenter mes projets et mes compétences techniques.
+  Welcome to my portfolio! I'm Amine, a Full-Stack developer passionate about creating smooth and aesthetic digital experiences. This repository contains the source code of my personal showcase, designed to highlight my projects and technical skills.
 </p>
 
 ---
